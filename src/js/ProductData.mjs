@@ -12,7 +12,7 @@ function convertToJson(res) {
 export default class ProductData {
   constructor(category) {
     this.category = category;
-    this.path = `/json/${this.category}.json`;
+    this.path = `../json/${this.category}.json`;
     //this.products = tentsData;
   }
   getData() {
@@ -24,6 +24,8 @@ export default class ProductData {
   async findProductById(id) {
     const products = await this.getData();
     return products.find((item) => item.Id === id);
+    
+   
   }
 }
 
