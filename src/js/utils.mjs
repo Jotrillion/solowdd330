@@ -29,5 +29,15 @@ export function getParam(param) {
     
 }
 
+export function renderListWithTemplate(template, parentElement, list, position = "afterbegin", clear = false) {
+  const htmlStrings = list.map(template);
+  //if clear is true, we need to clear out parent contents
+  if (clear) {
+    parentElement.innerHTMl = "";
+  }
+    parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+  }
+
+
 
 
