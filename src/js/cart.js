@@ -29,4 +29,3 @@ function cartItemTemplate(item) {
 
 renderCartContents();
 
-document.getElementById("counter").innerText = getCartCount();

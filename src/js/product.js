@@ -7,7 +7,6 @@ const productId = getParam("product");
 
 const product = new productDetails(productId, dataSource);
 product.init();
-document.getElementById("counter").innerText = getCartCount();
 
 
 // add to cart button event handler

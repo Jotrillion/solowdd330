@@ -15,7 +15,6 @@ const productList = new ProductList("Tents", dataSource, element);
 //
 
 productList.init();
-document.getElementById("counter").innerText = getCartCount();
 
 
 // function addProductToCart(product) {
