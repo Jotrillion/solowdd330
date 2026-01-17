@@ -132,7 +132,6 @@ button {
   fill: gray;
 }
 
-
 #counter {
   display: block;
   background-color: var(--primary-color);
