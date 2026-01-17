@@ -45,7 +45,7 @@ function productDetailsTemplate(product) {
     const amountDiscounted = document.createElement('h4');
     
     retailPrice.innerHTML = `Retail price: $${parseFloat(product.SuggestedRetailPrice)}`;
-    amountDiscounted.innerHTML=`Discount: $${parseFloat(product.SuggestedRetailPrice)-parseFloat(product.ListPrice)}`;
+    amountDiscounted.innerHTML=`Discount: $${(parseFloat(product.SuggestedRetailPrice)-parseFloat(product.ListPrice)).toFixed(2)}`;
     //discount.appendChild(newLine);
     discount.appendChild(retailPrice);
     discount.appendChild(amountDiscounted);
