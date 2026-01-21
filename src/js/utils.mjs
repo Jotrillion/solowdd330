@@ -62,10 +62,33 @@ export async function loadHeaderFooter(){
   const header = document.querySelector("#dynamic-header");
   const footer = document.querySelector("#dynamic-footer");
 
-  renderWithTemplate(templateHeader, header);
+  renderWithTemplate(templateHeader, header, null, initCartCounter);
   renderWithTemplate(templateFooter, footer);
 }
 
+export function initCartCounter() {
+   
+    const cartIcon = document.querySelector(".cart");
+    if (!cartIcon) return;
+    
+    let counter = document.getElementById("counter");
+ 
+    if (!counter) {
+    counter = document.createElement("div");
+    counter.id = "counter";
+        cartIcon.prepend(counter);
+    }
+    
+    const count = getCartCount();
+
+    if (count > 0) {
+    counter.textContent = count;
+    counter.removeAttribute("data-hidden");
+}
+    else {
+    counter.setAttribute("data-hidden", "true");
+ }
+};
 
 
 
