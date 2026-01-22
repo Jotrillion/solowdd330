@@ -3,13 +3,13 @@ import { getLocalStorage, renderListWithTemplate } from "./utils.mjs";
 function cartCardTemplate(product) {
     return `
         <li class="cart-card divider">
-            <a href="product_pages/?product=${product.Id}" class="cart-card__image">
+            <a href="/product_pages/?product=${product.Id}" class="cart-card__image">
               <img
                 src="${product.Image}"
                 alt="${product.Name}"
               />
             </a>
-            <a href="product_pages/?product=${product.Id}">
+            <a href="/product_pages/?product=${product.Id}">
               <h2 class="card__name">${product.Name}</h2>
             </a>
             <p class="cart-card__color">${product.Colors[0].ColorName}</p>
