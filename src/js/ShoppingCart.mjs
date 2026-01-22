@@ -1,4 +1,4 @@
-import { renderListWithTemplate } from "./utils.mjs";
+import { getLocalStorage, renderListWithTemplate } from "./utils.mjs";
 
 function cartCardTemplate(product) {
     return `
@@ -20,14 +20,13 @@ function cartCardTemplate(product) {
 }
 
 export default class CartList {
-    constructor(category, dataSource, listElement) {
-        this.category = category;
-        this.dataSource = dataSource;
+    constructor(listElement) {
+        //this.category = category;
+        //this.dataSource = dataSource;
         this.listElement = listElement;
-       
     }
     async init() {
-        const list = await this.dataSource.getData();
+        const list = getLocalStorage("so-cart") || [];
         this.renderList(list);
     }
 
