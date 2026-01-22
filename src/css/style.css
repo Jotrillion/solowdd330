@@ -295,6 +295,19 @@ button {
   display: none;
 }
 
+.category {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.category img {
+  padding: .8em;
+  display: inline-block;
+  width: 5em;
+  height: 5em;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
