@@ -23,12 +23,12 @@ const pricebtnHL = document.querySelector("#filter-priceBtn-HL"); //Filter price
 
 brandNamebtnAZ.addEventListener("click", () => {
     //Sort Brand Name from A-Z
-    productList.sortList("Brand.Name");
+    productList.sortList("Name");
 });
 
 brandNamebtnZA.addEventListener("click", () => {
     //Sort Brand Name from Z-A
-    productList.sortList("Brand.Name", "desc");
+    productList.sortList("Name", "desc");
 });
 
 pricebtnLH.addEventListener("click", () => {

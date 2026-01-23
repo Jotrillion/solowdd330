@@ -32,14 +32,15 @@ export default class ProductList {
         renderListWithTemplate(productCardTemplate, this.listElement, list);
     }
     sortList(sortRule, order = "asc") {
+        this.listElement.innerHTML = ""; //clear HTML contents
         const sortedProducts = this.products.map(item => item); //copy the array
         
+        //custom sorting:
         sortedProducts.sort((prodA, prodB) => {
-            let valueProdA = prodA[sortRule];
+            //store values according to what key in the JSON file (sortRule variable)
+            let valueProdA = prodA[sortRule]; 
             let valueProdB = prodB[sortRule];
-            let comparison = 0;
-
-            //NOTE: fix sorting, not sorting accoring to price
+            let comparison = 0; //comparison value
 
             //If comparing a string:
             if (typeof valueProdA === "string") {
@@ -60,10 +61,10 @@ export default class ProductList {
             }
             //If comparing numbers:
             else{
-                comparison = valueProdA - valueProdB;
+                comparison = valueProdA - valueProdB; //subtract the numbers
             }
 
-            //Check the order
+            //Check the order condition:
             if (order === "desc") {
                 return comparison * -1; // list in descending order
             }
