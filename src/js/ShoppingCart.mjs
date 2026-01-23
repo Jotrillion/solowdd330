@@ -1,4 +1,4 @@
-import { getLocalStorage, renderListWithTemplate, setLocalStorage, initCartCounter } from "./utils.mjs";
+import { getLocalStorage, renderListWithTemplate, setLocalStorage, initCartCounter, updateCartFooter } from "./utils.mjs";
 
     
 
@@ -72,6 +72,7 @@ export default class CartList {
     setLocalStorage("so-cart", cartItems);
         this.renderList(cartItems);
         initCartCounter();
+        updateCartFooter();
     }
     
     removeItem(productID) {
@@ -80,14 +81,15 @@ export default class CartList {
         setLocalStorage("so-cart", cartItems);
         this.renderList(cartItems);
         initCartCounter();
+        updateCartFooter();
     }
 
     updateTotal(list) {
         if (!this.totalElement) return;
 
         const total = list.reduce(
-            (sum, item) => sum + (item.FinalPrice * (item.quantity ?? 1)),
-        0
+            (sum, item) => sum + (item.FinalPrice * (item.quantity ?? 1))
+        
         ); 
         this.totalElement.textContent = `$${total.toFixed(2)}`;
     }
