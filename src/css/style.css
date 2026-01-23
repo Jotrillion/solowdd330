@@ -173,6 +173,18 @@ button {
   margin-top: 2rem;
   padding: 1rem;
   display: block;
+  /* border-style: double; */
+}
+
+.products h2{
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.products div{
+  display: flex;
+  /* border-style: double; */
+  justify-content: space-evenly;
 }
 
 #cart-products{

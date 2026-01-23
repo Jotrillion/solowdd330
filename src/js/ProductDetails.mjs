@@ -35,29 +35,32 @@ export default class productDetails{
 }
 
 function productDetailsTemplate(product) {
-    document.querySelector('h2').textContent = product.Brand.Name;
-    document.querySelector('h3').textContent = product.NameWithoutBrand;
+    
+    
     //console.log("product= ", product);
     //******************Code for Add discount to product detail pages**************/
     //*****************************************************************************/
-    const discount = document.querySelector('h3');
-    const retailPrice = document.createElement('h4');
-    const amountDiscounted = document.createElement('h4');
+    // const discount = document.querySelector('h3');
+    // const retailPrice = document.createElement('h4');
+    // const amountDiscounted = document.createElement('h4');
     
-    retailPrice.innerHTML = `Retail price: $${parseFloat(product.SuggestedRetailPrice)}`;
-    amountDiscounted.innerHTML=`Discount: $${(parseFloat(product.SuggestedRetailPrice)-parseFloat(product.ListPrice)).toFixed(2)}`;
-    //discount.appendChild(newLine);
-    discount.appendChild(retailPrice);
-    discount.appendChild(amountDiscounted);
+    // retailPrice.innerHTML = `Retail price: $${parseFloat(product.SuggestedRetailPrice)}`;
+    // amountDiscounted.innerHTML=`Discount: $${(parseFloat(product.SuggestedRetailPrice)-parseFloat(product.ListPrice)).toFixed(2)}`;
+    // //discount.appendChild(newLine);
+    // discount.appendChild(retailPrice);
+    // discount.appendChild(amountDiscounted);
     //*****************************************************************************/
     //*****************************************************************************/
+    
     const productImage = document.getElementById('productImage');
-    productImage.src = product.Image;
+    productImage.src = product.Images.PrimaryLarge;
     productImage.alt = product.NameWithoutBrand;
 
-    document.getElementById('productPrice').textContent = product.FinalPrice;
-    document.getElementById('productColor').textContent = product.Colors[0].ColorName;
-    document.getElementById('productDesc').innerHTML = product.DescriptionHtmlSimple;
+    document.getElementById('brand').textContent = product.Brand.Name;
+    document.getElementById('name').textContent = product.NameWithoutBrand;
+    document.getElementById('productPrice').textContent = "Price: $" + parseFloat(product.FinalPrice).toFixed(2);
+    document.getElementById('productColor').textContent = "Color: " + product.Colors[0].ColorName;
+    document.getElementById('productDesc').innerHTML = "Availabillity: " + product.DescriptionHtmlSimple;
 
     document.getElementById('addToCart').dataset.id = product.Id;
 }
