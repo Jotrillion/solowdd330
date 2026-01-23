@@ -112,6 +112,7 @@ button {
 
 .divider {
   border-bottom: 2px solid var(--primary-color);
+  /* border-style: double; */
 }
 
 /* End utility classes */
@@ -247,7 +248,9 @@ button {
 }
 
 .product-detail img {
-  width: 100%;
+  max-width: 100%;
+  height: auto;
+  /* object-fit: contain; */
 }
 
 /* Start cart list card styles */

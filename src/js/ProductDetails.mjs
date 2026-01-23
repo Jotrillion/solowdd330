@@ -34,10 +34,8 @@ export default class productDetails{
 
 }
 
-function productDetailsTemplate(product) {
-    
-    
-    //console.log("product= ", product);
+function productDetailsTemplate(product) {  
+   
     //******************Code for Add discount to product detail pages**************/
     //*****************************************************************************/
     // const discount = document.querySelector('h3');
@@ -52,15 +50,30 @@ function productDetailsTemplate(product) {
     //*****************************************************************************/
     //*****************************************************************************/
     
-    const productImage = document.getElementById('productImage');
-    productImage.src = product.Images.PrimaryLarge;
+    //**********Code to chage the picture size depending on window width***********/
+    //*****************************************************************************/
+    productImage.src = product.Images.PrimaryExtraLarge;
+    window.addEventListener("resize",()=>{
+        const windowWidth = window.innerWidth;
+        const productImage = document.getElementById('productImage'); 
+            
+        if (windowWidth < 600){
+            productImage.src = product.Images.PrimarySmall; 
+        }else if (windowWidth < 800){
+            productImage.src = product.Images.PrimaryMedium;
+        }else if (windowWidth < 1200) {
+            productImage.src = product.Images.PrimaryLarge;
+        }else {
+            productImage.src = product.Images.PrimaryExtraLarge;
+        }
+    });
+    //*****************************************************************************/
+    //*****************************************************************************/
     productImage.alt = product.NameWithoutBrand;
-
     document.getElementById('brand').textContent = product.Brand.Name;
     document.getElementById('name').textContent = product.NameWithoutBrand;
     document.getElementById('productPrice').textContent = "Price: $" + parseFloat(product.FinalPrice).toFixed(2);
     document.getElementById('productColor').textContent = "Color: " + product.Colors[0].ColorName;
     document.getElementById('productDesc').innerHTML = "Availabillity: " + product.DescriptionHtmlSimple;
-
     document.getElementById('addToCart').dataset.id = product.Id;
 }
