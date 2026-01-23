@@ -5,7 +5,7 @@ function cartCardTemplate(product) {
         <li class="cart-card divider">
             <a href="/product_pages/?product=${product.Id}" class="cart-card__image">
               <img
-                src="${product.Image}"
+                src="${product.Images?.PrimaryMedium ?? "images/placeholder.png"}"
                 alt="${product.Name}"
               />
             </a>

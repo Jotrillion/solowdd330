@@ -22,7 +22,7 @@ if (getCartCount() === 0) {
 else {
     let subTotal = GetCartTotal();
     divTotal.classList.toggle("cart-footer");
-    displayTotal.textContent += `$${subTotal}`;
+    displayTotal.textContent += `$${subTotal.toFixed(2)}`;
 }
 
 
