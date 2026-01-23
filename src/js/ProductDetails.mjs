@@ -51,8 +51,8 @@ function productDetailsTemplate(product) {
     discount.appendChild(amountDiscounted);
     //*****************************************************************************/
     //*****************************************************************************/
-    const productImage = document.getElementById('productImage');
-    productImage.src = product.Image;
+    const productImage = document.getElementById('p-image');
+    productImage.src = product.Images.PrimaryLarge;
     productImage.alt = product.NameWithoutBrand;
 
     document.getElementById('productPrice').textContent = product.FinalPrice;
