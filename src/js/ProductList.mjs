@@ -27,8 +27,9 @@ export default class ProductList {
     async init() {
         const list = await this.dataSource.getData(this.category);
         this.renderList(list);
-
-    }
+        const formatCategory = this.category.replace(/-/g, " ")
+        document.querySelector(".title").textContent = formatCategory;
+            }
 
     renderList(list) {
         renderListWithTemplate(productCardTemplate, this.listElement, list);
