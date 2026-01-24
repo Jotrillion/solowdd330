@@ -24,6 +24,7 @@ export function setClick(selector, callback) {
 }
 
 export function getParam(param) {
+  
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     return urlParams.get(param);
@@ -40,7 +41,8 @@ export function renderListWithTemplate(template, parentElement, list, position =
 }
 export function getCartCount() {
   const cart = JSON.parse(localStorage.getItem("so-cart")) || [];
-  return cart.length;
+  return cart.reduce(
+    (total, item) => total + (item.quantity ?? 1), 0  );
 }
 
 export function renderWithTemplate(template, parentElement, data, callback) {
@@ -64,6 +66,8 @@ export async function loadHeaderFooter(){
 
   renderWithTemplate(templateHeader, header, null, initCartCounter);
   renderWithTemplate(templateFooter, footer);
+
+  initCartCounter();
 }
 
 //cart counter functioning.  Gets called as a callback function when renderWithTemplate is called for the dynamic header//
@@ -91,6 +95,28 @@ export function initCartCounter() {
  }
 };
 
+export function updateCartFooter() {
+    const divTotal = document.querySelector(".cart-footer");
+    const displayTotal = document.querySelector(".cart-total");
+    const dispQuantity = document.querySelector(".cart-quant");
+
+    const cartItems = getLocalStorage("so-cart") || [];
+
+    if (getCartCount() === 0) {
+      divTotal.classList.add("hide");
+      displayTotal.textContent = "";
+      dispQuantity.textContent = "";
+    } else {
+        divTotal.classList.remove("hide");
+
+        
+        const subTotal = cartItems.reduce((total, item) => total + parseFloat(item.FinalPrice) * (item.quantity ?? 1), 0);
+
+         displayTotal.textContent = `Total Price: $${subTotal.toFixed(2)}`;
+         dispQuantity.textContent = `Total Items: ${getCartCount()}`;
+}
+    
+}
 
 
 
