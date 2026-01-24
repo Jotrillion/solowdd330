@@ -14,7 +14,7 @@ function cartItemTemplate(item) {
   const image = item.Image.PrimarySmall;
   const name = item.NameWithoutBrand;
   const color = item.Colors?.[0]?.ColorName;
-  const price = item.item.FinalPrice;
+  const price = item.FinalPrice;
 
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
