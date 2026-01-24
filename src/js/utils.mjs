@@ -103,16 +103,16 @@ export function updateCartFooter() {
 
     if (getCartCount() === 0) {
       divTotal.classList.add("hide");
-      displayTotal.textContent = "$0.00";
-      dispQuantity.textContent = "0";
+      displayTotal.textContent = "";
+      dispQuantity.textContent = "";
     } else {
         divTotal.classList.remove("hide");
 
         
         const subTotal = cartItems.reduce((total, item) => total + parseFloat(item.FinalPrice) * (item.quantity ?? 1), 0);
 
-         displayTotal.textContent = `$${subTotal.toFixed(2)}`;
-         dispQuantity.textContent = ` ${getCartCount()}`;
+         displayTotal.textContent = `Total Price: $${subTotal.toFixed(2)}`;
+         dispQuantity.textContent = `Total Items: ${getCartCount()}`;
 }
     
 }

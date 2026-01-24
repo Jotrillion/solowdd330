@@ -309,9 +309,9 @@ button {
   text-align: right;
 }
 
-.cart-total {
+.cart-total, .cart-quant {
   padding-left: 0;
-  font-size: var(--large-font);
+  
   font-weight: bold;
   text-align: left;
 }
@@ -331,13 +331,14 @@ button {
 }
 
 .remove {
-  display: inline;
-  background-color: var(--primary-color);
+  
+  background-color: black;
+  color: white;
   font-size: 1rem;
   text-align: center;
-  width: 100px;
-  padding: 5px;
-  border-radius: 20px;
+  width: 25px;
+  padding: 1px;
+  border-radius: 5px;
 }
 
 .cart-footer {
@@ -345,9 +346,11 @@ button {
   flex-direction: column;
   justify-content: flex-start;
   height: 200px;
-  
+   
 }
 
+
+  
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;

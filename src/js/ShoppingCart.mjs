@@ -23,7 +23,7 @@ function cartCardTemplate(product) {
                 <button class = "subtract">-</button>
                 </section>
             <p class="cart-card__price">$${((product.FinalPrice) * (product.quantity ?? 1)).toFixed(2)}</p>
-            <button class="remove">Remove</button>
+            <button class="remove">X</button>
         </li>
     `;
 }
@@ -39,6 +39,7 @@ export default class CartList {
     async init() {
         const list = getLocalStorage("so-cart") || [];
         this.renderList(list);
+        updateCartFooter();
     }
     
     
