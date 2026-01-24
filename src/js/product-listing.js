@@ -64,7 +64,7 @@ filterBtnList.forEach(btn => {
         //Remove the class "clicked" in all buttons in the list:
         filterBtnList.forEach(button => button.classList.remove("clicked"));
         //and then add the class
-        btn.classList.add('clicked');
+        btn.classList.add("clicked");
     });
 });
 
