@@ -11,10 +11,10 @@ function renderCartContents() {
 
 function cartItemTemplate(item) {
 
-  const image = item.Images.PrimarySmall;
+  const image = item.Image;
   const name = item.NameWithoutBrand;
   const color = item.Colors?.[0]?.ColorName;
-  const price = item.FinalPrice;
+  const price = item.Price;
 
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
