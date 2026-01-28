@@ -6,6 +6,7 @@ export default class CheckoutProcess {
         this.key = key;
         this.outputSelector = outputSelector
         
+        
                
     }
 
@@ -40,7 +41,7 @@ export default class CheckoutProcess {
 
     init() {
         this.calcSubtotal();
-        this.calcTotal();
+        this.calcTotal(subtotal, totalItems);
     }
 
 
