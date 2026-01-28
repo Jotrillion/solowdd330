@@ -82,19 +82,23 @@ export default class CheckoutProcess {
     
     }
 
-    
+    packageItems(items) {
+        const cartItems = getLocalStorage("so-cart") || [];
+        const simplifiedCart = cartItems.map(item => {
+            return {
+                id: item.Id,
+                name: item.Name,
+                price: item.FinalPrice,
+                quantity: item.quantity
+            }
+        });
+        return simplifiedCart;
+    }
+
+    async checkout(form){
+
+    }
 }
 
-function packageItems(items) {
-    const cartItems = getLocalStorage("so-cart") || [];
-    const simplifiedCart = cartItems.map( item => {
-        return {
-            id: item.Id,
-            name: item.Name,
-            price: item.FinalPrice,
-            quantity: item.quantity
-        }
-    });
-    return simplifiedCart;
-}
+
 
