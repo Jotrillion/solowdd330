@@ -44,14 +44,13 @@ export default class CheckoutProcess {
     
     calcTotal(subtotal, totalItems) {
         
-        const tax = subtotal * .06;
-        const subtotalWithTax = subtotal + tax;
-        const shipping = 10 + (2 * (totalItems - 1));
-        const total = subtotalWithTax + shipping;
+        this.tax = subtotal * .06;
+        this.shipping = totalItems >0 ?10 + (2 * (totalItems - 1)):0; //prevents negative shipping totals if no cart items
+        this.total = subtotal + this.tax + this.shipping;
 
-        document.getElementById("tax").innerHTML = `Tax: $${tax.toFixed(2)}`;
-        document.getElementById("shipping").innerHTML = `Shipping: $${shipping.toFixed(2)}`;
-        document.getElementById("total").innerHTML = `Total: $${total.toFixed(2)}`;
+        document.getElementById("tax").innerHTML = `Tax: $${this.tax.toFixed(2)}`;
+        document.getElementById("shipping").innerHTML = `Shipping: $${this.shipping.toFixed(2)}`;
+        document.getElementById("total").innerHTML = `Total: $${this.total.toFixed(2)}`;
         return total;
         
 
@@ -86,7 +85,7 @@ export default class CheckoutProcess {
     
     }
 
-    async checkout(){
+    async checkout(form){
         // get the form element data by the form name
         const formElement = document.forms["checkoutForm"];
         // convert the form data to a JSON order object using the formDataToJSON function
@@ -102,7 +101,7 @@ export default class CheckoutProcess {
 
         // call the checkout method in the ExternalServices module and send it the JSON order data.
         try {
-            const response = await externalServices.checkout(oderList);
+            const response = await externalServices.checkout(orderList);
             console.log(response);
         }
         catch (e) {
@@ -122,6 +121,7 @@ function packageItems(items) {
         }
     });
     return simplifiedCart;
+    
 }
 
 // takes a form element and returns an object where the key is the "name" of the form input.
@@ -134,5 +134,6 @@ function formDataToJSON(formElement) {
     });
 
     return convertedJSON;
+   
 }
 
