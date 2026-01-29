@@ -35,9 +35,9 @@
 
       <fieldset>
         <legend>Payment Information</legend>
-        <label>Credit Card Number<input name="cardNumber" type="text" pattern="[0-9]{13,19}" required value="1234123412341234"></label>
+        <label>Credit Card Number<input name="cardNumber" type="text" pattern="[0-9]{13,19}" required placeholder="1234123412341234"></label>
         <label>Expiration Date<input name="expiration" type="text" maxlength="5" autocomplete="cc-exp" placeholder="MM/YY" required></label>
-        <label>Security Code<input name="code" type="text" pattern="\d{3}" required value="123"></label>
+        <label>Security Code<input name="code" type="text" pattern="\d{3}" required placeholder="123"></label>
       </fieldset>
       <button id="checkout-btn" type="submit">Checkout</button>
     </form>

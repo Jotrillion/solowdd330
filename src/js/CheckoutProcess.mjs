@@ -98,7 +98,6 @@ export default class CheckoutProcess {
         orderList.tax = this.tax;
         orderList.shipping = this.shipping;
         orderList.items = packageItems(this.list);
-        console.log("Order List" + orderList);
 
         // call the checkout method in the ExternalServices module and send it the JSON order data.
         try {
