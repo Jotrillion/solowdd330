@@ -103,9 +103,11 @@ export default class CheckoutProcess {
         try {
             const response = await externalServices.checkout(orderList);
             console.log(response);
+            window.location.href = "success.html"
         }
         catch (e) {
             console.log(e);// shows error message
+            alert("something went wrong placing your order")
         }
     }
 }
