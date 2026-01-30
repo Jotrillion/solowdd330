@@ -157,6 +157,16 @@ export function addedToCartMsg(item) {
     addedMsg.remove()
   }, 2000);
 }
+export function animateCart() {
+  const cartIcon = document.querySelector(".cart");
+  cartIcon.classList.add('animate');
+  setTimeout(() => {
+    cartIcon.classList.remove("animate");
+  }, 1000)
+  
+
+}
+
 
 
 
