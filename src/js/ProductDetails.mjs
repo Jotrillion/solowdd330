@@ -27,6 +27,7 @@ export default class productDetails{
         setLocalStorage("so-cart", cartItems);
         animateCart();
         initCartCounter();
+        addedToCartMsg(this.product);
         
     }
     renderProductDetails() {
