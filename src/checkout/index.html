@@ -1,79 +1,59 @@
 <!doctype html>
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
 
-    <title>Sleep Outside | Checkout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="../css/style.css" />
-    
-    <script src="../js/checkout.js" type="module"></script>
-    <script src="../js/CheckoutProcess.mjs" type="module"></script>
-  </head>
+  <title>Sleep Outside | Checkout</title>
 
-  <body>
-    <header class="divider" id="dynamic-header"></header>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script src="/js/checkout.js" type="module"></script>
+</head>
 
-    <main class="divider">
-      <section class="products">        
-        <div class="checkout-container">
-            <!-- FORM -->
-            <form action="POST">
-              <h1>Review & Place your Order</h1>
-              <h2>Name</h2>
+<body>
+  <header class="divider" id="dynamic-header">
 
-              <label for="firstName">First Name</label>
-              <input type="text" id="firstName" required>
+  </header>
 
-              <label for="lastName">Last Name</label>
-              <input type="text" id="lastName" required>
+  <main class="divider">
+    <section class="products">
+      <h2>Review & Place your Order</h2>
+    </section>
+    <form id="checkout-form" name="checkoutForm">
+      <fieldset>
+        <legend>Shipping Information</legend>
+        <label>First Name<input name="fname" type="text" required></label>
+        <label>Last Name<input name="lname" type="text" required></label>
+        <label>Street Address<input name="street" type="text" required></label>
+        <label>City<input name="city" type="text" required></label>
+        <label>State<input name="state" type="text" pattern="[A-Z]{2}" required></label>
+        <label>ZIP Code<input name="zip" type="text" id="zip" pattern="\d{5}" required></label>
+      </fieldset>
 
-              <h2>Address</h2>
+      <fieldset>
+        <legend>Payment Information</legend>
+        <label>Credit Card Number<input name="cardNumber" type="text" pattern="[0-9]{13,19}" required placeholder="1234123412341234"></label>
+        <label>Expiration Date<input name="expiration" type="text" maxlength="5" autocomplete="cc-exp" placeholder="MM/YY" required></label>
+        <label>Security Code<input name="code" type="text" pattern="\d{3}" required placeholder="123"></label>
+      </fieldset>
+      <button id="checkout-btn" type="submit">Checkout</button>
+    </form>
+    <div id="checkoutData">
+      <p id="subtotal">test</p>
+      <p id="tax"></p>
+      <p id="shipping"></p>
+      <p id="total"></p>
 
-              <label for="street">Street Address</label>
-              <input type="text" id="street" required>
 
-              <label for="city">City</label>
-              <input type="text" id="city" required>
+    </div>
+  </main>
 
-              <label for="state">State</label>
-              <input type="text" id="state" required>
+  <footer id="dynamic-footer">
 
-              <label for="zip">Zip Code</label>
-              <input type="text" id="zip" required>
+  </footer>
+</body>
 
-              <h2>Payment</h2>
-
-              <label for="cardNumber">Credit Card Number</label>
-              <input type="text" id="cardNumber" required>
-
-              <label for="expiration">Expiration Date</label>
-              <input type="month" id="expiration" required>
-
-              <label for="securityCode">Security Code</label>
-              <input type="text" id="securityCode" required>
-            <!-- ORDER SUMMARY -->
-
-             <h2>Order Summary</h2>
-            <dl class="checkout-summary">              
-              <dt>Subtotal</dt>
-              <dd id="subtotal"></dd>
-              <dt>Tax</dt>
-              <dd id="tax"></dd> 
-              <dt>Shipping</dt>
-              <dd id="shipping"></dd> 
-              <dt>Total</dt>
-              <dd id="total"></dd> 
-            </dl>
-            <button type="submit">Checkout</button>
-            </form>
-          </div>
-      </section>
-    </main>
-
-    <footer id="dynamic-footer"></footer>
-  </body>
 </html>

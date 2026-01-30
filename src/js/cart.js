@@ -1,49 +1,11 @@
-import { getLocalStorage, getCartCount, loadHeaderFooter} from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
+import CartList from "./ShoppingCart.mjs";
 
-await loadHeaderFooter();
 
-function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart") || [];
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
 
-  document.querySelector("#product-list").innerHTML = htmlItems.join("");
+const element = document.querySelector("#cart-list");
+const cartList = new CartList(element);
 
-  const checkoutBtn = document.getElementById("btn-checkout");
 
-  const cart = JSON.parse(localStorage.getItem("so-cart")) || [];
-
-  
-  if (cart.length > 0) {
-    checkoutBtn.classList.remove("btn-hidden");
-
-  }
-  
-}
-
-function cartItemTemplate(item) {
-
-  const image = item.Image;
-  const name = item.NameWithoutBrand;
-  const color = item.Color;
-  const price = item.FinalPrice;
-  const qtd = item.quantity
-
-  const newItem = `<li class="cart-card divider">
-  <a href="#" class="cart-card__image">
-    <img
-      src="${image}"
-      alt="${name}"
-    />
-  </a>
-  <a href="#">
-    <h2 class="card__name">${name}</h2>
-  </a>
-  <p class="cart-card__color">${color}</p>
-  <p class="cart-card__quantity">qty: ${item.quantity}</p>
-  <p class="cart-card__price">$${(item.FinalPrice * item.quantity).toFixed(2)}</p>
-</li>`;
-
-  return newItem;
-}
-
-renderCartContents();
+cartList.init();
+loadHeaderFooter();

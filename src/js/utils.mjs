@@ -8,6 +8,7 @@ export function qs(selector, parent = document) {
 // retrieve data from localstorage
 export function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
+  
 }
 // save data to local storage
 export function setLocalStorage(key, data) {
@@ -22,26 +23,26 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
-// get the product id from the query string
 export function getParam(param) {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  const product = urlParams.get(param);
-  return product
+  
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    return urlParams.get(param);
+    
 }
 
 export function renderListWithTemplate(template, parentElement, list, position = "afterbegin", clear = false) {
   const htmlStrings = list.map(template);
-  // if clear is true we need to clear out the contents of the parent.
+  //if clear is true, we need to clear out parent contents
   if (clear) {
     parentElement.innerHTML = "";
   }
-  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
-  }
-  export function getCartCount() {
-    const cart = JSON.parse(localStorage.getItem("so-cart")) || [];
-    return cart.length;
-
+    parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}
+export function getCartCount() {
+  const cart = JSON.parse(localStorage.getItem("so-cart")) || [];
+  return cart.reduce(
+    (total, item) => total + (item.quantity ?? 1), 0  );
 }
 
 export function renderWithTemplate(template, parentElement, data, callback) {
@@ -51,19 +52,68 @@ export function renderWithTemplate(template, parentElement, data, callback) {
   }
 }
 
-async function loadTemplate(path) {
-  const res = await fetch(path);
-  const template = await res.text();
-  return template;
+export async function loadTemplate(path) {
+  const response = await fetch(path);
+  return await response.text();
 }
 
-export async function loadHeaderFooter() {
-  const headerTemplate = await loadTemplate("../partials/header.html");
-  const footerTemplate = await loadTemplate("../partials/footer.html");
+export async function loadHeaderFooter(){
+  const templateHeader = await loadTemplate("../partials/header.html");
+  const templateFooter = await loadTemplate("../partials/footer.html");
 
-  const headerElement = document.querySelector("#dynamic-header");
-  const footerElement = document.querySelector("#dynamic-footer");
+  const header = document.querySelector("#dynamic-header");
+  const footer = document.querySelector("#dynamic-footer");
 
-  renderWithTemplate(headerTemplate, headerElement);
-  renderWithTemplate(footerTemplate, footerElement);
+  renderWithTemplate(templateHeader, header, null, initCartCounter);
+  renderWithTemplate(templateFooter, footer);
+
+  initCartCounter();
+}
+
+//cart counter functioning.  Gets called as a callback function when renderWithTemplate is called for the dynamic header//
+export function initCartCounter() {
+   
+    const cartIcon = document.querySelector(".cart");
+    if (!cartIcon) return;
+    
+    let counter = document.getElementById("counter");
+ 
+    if (!counter) {
+    counter = document.createElement("div");
+    counter.id = "counter";
+        cartIcon.prepend(counter);
+    }
+    
+    const count = getCartCount();
+
+    if (count > 0) {
+    counter.textContent = count;
+    counter.removeAttribute("data-hidden");
+}
+    else {
+    counter.setAttribute("data-hidden", "true");
+ }
+};
+
+export function updateCartFooter() {
+    const divTotal = document.querySelector(".cart-footer");
+    const displayTotal = document.querySelector(".cart-total");
+    const dispQuantity = document.querySelector(".cart-quant");
+
+    const cartItems = getLocalStorage("so-cart") || [];
+
+    if (getCartCount() === 0) {
+      divTotal.classList.add("hide");
+      displayTotal.textContent = "";
+      dispQuantity.textContent = "";
+    } else {
+        divTotal.classList.remove("hide");
+
+        
+        const subTotal = cartItems.reduce((total, item) => total + parseFloat(item.FinalPrice) * (item.quantity ?? 1), 0);
+
+         displayTotal.textContent = `Total Price: $${subTotal.toFixed(2)}`;
+         dispQuantity.textContent = `Total Items: ${getCartCount()}`;
+}
+    
 }
