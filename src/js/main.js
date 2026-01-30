@@ -13,5 +13,10 @@ if (getParam("checkout") === "success") {
 
   if (successMessage) {
     successMessage.hidden = false;
+    history.replaceState({}, "", "/index.html");
+    setTimeout(() => {
+        successMessage.hidden = true;
+      }, 5000);
+    
   }
 }
