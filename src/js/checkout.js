@@ -13,5 +13,9 @@ const checkoutForm = document.getElementById("checkout-form");
 
 checkoutForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    checkoutProcess.checkout();
+   
+    checkoutProcess.checkout(checkoutForm);
+   
+    
+
 });

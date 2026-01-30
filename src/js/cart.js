@@ -9,3 +9,8 @@ const cartList = new CartList(element);
 
 cartList.init();
 loadHeaderFooter();
+
+const cartBtn = document.querySelector("#checkout");
+cartBtn.addEventListener("click", () => {
+    window.location.href = "/checkout/index.html";
+    })

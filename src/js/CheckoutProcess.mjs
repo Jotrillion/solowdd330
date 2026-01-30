@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, alertMessage, removeAllAlerts} from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 
 //External services:
@@ -86,7 +86,7 @@ export default class CheckoutProcess {
     
     }
 
-    async checkout(form){
+    async checkout(){
         // get the form element data by the form name
         const formElement = document.forms["checkoutForm"];
         // convert the form data to a JSON order object using the formDataToJSON function
@@ -103,11 +103,28 @@ export default class CheckoutProcess {
         try {
             const response = await externalServices.checkout(orderList);
             console.log(response);
+            
+            window.location.href = "success.html"
+            localStorage.clear("so-cart");
         }
         catch (e) {
             console.log(e);// shows error message
+            
+            removeAllAlerts();
+           
+            if (e.data && typeof e.data === "object") {
+                Object.values(e.data).forEach(msg => {
+                    if (msg) alertMessage(msg);
+                });
+            }
+            else if (typeof e.message === "string") {
+                alertMessage(e.message);
+            } else {
+                alertMessage("Something went wrong with placing your order.")
+            }
+           
         }
-    }
+    } 
 }
 
 function packageItems(items) {

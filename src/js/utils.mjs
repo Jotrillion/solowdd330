@@ -118,6 +118,45 @@ export function updateCartFooter() {
     
 }
 
+export function alertMessage(message, scroll=true) {
+  const main = document.querySelector("main");
+  const alert = document.createElement("div");
+  alert.classList.add("alert-div");
+  alert.classList.add("alert");
+  alert.innerHTML = `<p>${message}</p><span class="closer">X</span>`;
+
+  alert.addEventListener("click", function(e) {
+    if(e.target.tagName == "SPAN") {
+    main.removeChild(this);
+    }
+});
+
+
+main.prepend(alert);
+if (scroll) window.scrollTo(0, 0);
+ 
+};
+
+export function removeAllAlerts() {
+  const alerts = document.querySelectorAll(".alert");
+  alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
+}
+
+export function addedToCartMsg(item) {
+  const productDetail = document.querySelector(".product-detail");
+  if (!productDetail) return;
+
+  const addedMsg = document.createElement("div");
+  addedMsg.classList.add("cartAddMsg");
+
+  const productName = item.Name || item.NameWithoutBrand || "Product";
+  addedMsg.innerHTML = `${productName} added to cart!`;
+  productDetail.append(addedMsg);
+
+  setTimeout(() => {
+    addedMsg.remove()
+  }, 2000);
+}
 export function animateCart() {
   const cartIcon = document.querySelector(".cart");
   cartIcon.classList.add('animate');

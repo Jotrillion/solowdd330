@@ -1,3 +1,4 @@
+import { getCartCount, getLocalStorage, setLocalStorage, initCartCounter, addedToCartMsg } from "./utils.mjs";
 import { getCartCount, getLocalStorage, setLocalStorage, initCartCounter, animateCart } from "./utils.mjs";
 
 export default class productDetails{
