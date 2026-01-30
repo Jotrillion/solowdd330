@@ -104,7 +104,7 @@ export default class CheckoutProcess {
             const response = await externalServices.checkout(orderList);
             console.log(response);
             
-            window.location.href = "/checkout/success.html"
+            window.location.href = "/checkout/success.html";
             localStorage.removeItem("so-cart");
         }
         catch (e) {
