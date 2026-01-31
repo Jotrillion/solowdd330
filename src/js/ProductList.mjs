@@ -37,7 +37,16 @@ export default class ProductList {
             if (title) {
                 title.textContent = formatCategory;
             }
+            this.renderBreadcrumb();
         }
+    }
+
+    renderBreadcrumb() {
+        const breadcrumbEl = document.getElementById("breadcrumb");
+        if (!breadcrumbEl) return;
+        const formatCategory = this.category.replace(/-/g, " ");
+        const itemCount = this.products.length;
+        breadcrumbEl.innerHTML = `<span>${formatCategory}</span> -> <span>(${itemCount} items)</span>`;
     }
 
     renderList(list) {
@@ -124,6 +133,8 @@ export default class ProductList {
         const modalMessage = document.getElementById("modal-message");
         const closeModal = document.getElementById('close-modal');
 
+        if (!modal || !modalMessage || !closeModal) return;
+
         modalMessage.innerHTML = `
             <h3>Product:</h3>
             <p>${product.NameWithoutBrand}</p>
@@ -134,10 +145,24 @@ export default class ProductList {
 
         modal.classList.remove("hidden");
 
-         //Hide Modal
-        closeModal.addEventListener('click',() => {
-        modal.classList.add('hidden');
-    });
+        // Create close function to avoid duplicate listeners
+        const closeHandler = () => {
+            modal.classList.add('hidden');
+        };
+
+        // Remove existing listeners by cloning the element
+        const closeModalClone = closeModal.cloneNode(true);
+        closeModal.parentNode.replaceChild(closeModalClone, closeModal);
+
+        // Add click listener to close button
+        closeModalClone.addEventListener('click', closeHandler);
+
+        // Close modal by clicking outside of it
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        }, { once: true });
     }
 }
 

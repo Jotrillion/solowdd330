@@ -11,9 +11,17 @@ export default class productDetails{
     async init() {
         this.product = await this.dataSource.findProductById(this.productId);
         this.renderProductDetails();
+        this.renderBreadcrumb();
         document
             .getElementById('addToCart')
             .addEventListener('click', this.addProductToCart.bind(this));
+    }
+
+    renderBreadcrumb() {
+        const breadcrumbEl = document.getElementById("breadcrumb");
+        if (!breadcrumbEl || !this.product.Category) return;
+        const category = this.product.Category.replace(/-/g, " ");
+        breadcrumbEl.innerHTML = `<span>${category}</span>`;
     }
     addProductToCart() {
         const cartItems = getLocalStorage("so-cart") || []; // get cart array of items from local storage if null set to empty array
