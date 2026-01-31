@@ -8,9 +8,13 @@ const cartList = new CartList(element);
 
 
 cartList.init();
+<<<<<<< HEAD
 loadHeaderFooter();
 
 const cartBtn = document.querySelector("#checkout");
 cartBtn.addEventListener("click", () => {
     window.location.href = "/checkout/index.html";
     })
+=======
+loadHeaderFooter();
+>>>>>>> ps--discountflag-fixed

@@ -298,6 +298,7 @@ button {
   /* border-style: dashed; */
   display: flex;
   justify-content: space-around;
+<<<<<<< HEAD
 }
 
 .cartAddMsg {
@@ -305,6 +306,8 @@ button {
   padding: 5px;
   font-size: 1.3rem;
   font-weight: bold;
+=======
+>>>>>>> ps--discountflag-fixed
 }
 
 /* Start cart list card styles */
@@ -440,12 +443,15 @@ button {
    
 }
 
+<<<<<<< HEAD
 .cart-footer.hide {
   display: none;
 }
 
 
 
+=======
+>>>>>>> ps--discountflag-fixed
 /* Search bar */
 #search-div {
   margin: auto;
@@ -478,7 +484,18 @@ button {
   width: 70%;
   margin-bottom: 1em;
 }
+<<<<<<< HEAD
   
+=======
+
+.success-message {
+  font-size: 1rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  color: #065f46;
+}
+
+>>>>>>> ps--discountflag-fixed
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;

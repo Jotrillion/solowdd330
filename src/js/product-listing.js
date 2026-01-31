@@ -53,4 +53,3 @@ filterBtnList.forEach(btn => {
         btn.classList.add("clicked");
     });
 });
-
