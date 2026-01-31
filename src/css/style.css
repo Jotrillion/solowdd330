@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -117,7 +117,6 @@ button {
 
 .divider h2 {
   text-align: center;
-
 }
 
 .title {
@@ -136,10 +135,10 @@ button {
 .cart.animate {
   animation-name: grow-shrink;
   animation-duration: 1s;
-  }
+}
 
 @keyframes grow-shrink {
-  0%, 
+  0%,
   75% {
     scale: 100%;
   }
@@ -152,7 +151,6 @@ button {
 .cart svg {
   width: 25px;
   margin: 10px;
-  
 }
 
 .cart:hover svg {
@@ -287,7 +285,6 @@ button {
 }
 
 .product-detail img {
-
   max-width: 100%;
   height: auto;
   /* border-style: double; */
@@ -317,15 +314,11 @@ button {
   grid-template-columns: 2;
   align-items: center;
   margin: 5px;
-
-
 }
 
 .cart-card__image {
   grid-row: 1/3;
 }
-
-
 
 .card__name {
   grid-row: 1;
@@ -383,13 +376,13 @@ button {
   margin: 0.5em 0;
 }
 
-#filterResult{
+#filterResult {
   margin: 0;
   font-size: var(--large-font);
   font-weight: 700;
 }
 
-.filterBtn{
+.filterBtn {
   border-radius: 0.6em;
   width: 100%;
   background-color: var(--tertiary-color);
@@ -408,9 +401,10 @@ button {
   display: none;
 }
 
-.add, .subtract {
+.add,
+.subtract {
   display: inline;
-  background-color:var(--primary-color);
+  background-color: var(--primary-color);
   width: 25px;
   height: 25px;
   text-align: center;
@@ -422,7 +416,7 @@ button {
 .remove {
   position: absolute;
   top: 2%;
-  right: .75%; 
+  right: 0.75%;
   background-color: var(--tertiary-color);
   color: white;
   font-size: 1rem;
@@ -437,14 +431,11 @@ button {
   flex-direction: column;
   justify-content: flex-start;
   height: 200px;
-   
 }
 
 .cart-footer.hide {
   display: none;
 }
-
-
 
 /* Search bar */
 #search-div {
@@ -462,15 +453,14 @@ button {
   padding: 10px;
   font-size: 17px;
 }
-#checkout-form{
+#checkout-form {
   display: inline;
 }
 
-#checkout-form fieldset{
+#checkout-form fieldset {
   padding: 0.5em;
   margin: 1em;
 }
-
 
 #checkout-form input {
   display: block;
@@ -478,7 +468,7 @@ button {
   width: 70%;
   margin-bottom: 1em;
 }
-  
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -501,7 +491,6 @@ button {
   #filterMenu {
     display: flex;
   }
-
 }
 
 /*Modal*/
@@ -519,7 +508,7 @@ button {
   display: none;
 }
 
-.modal-content{
+.modal-content {
   background: rgb(255, 255, 255);
   padding: 1.5rem;
   border-radius: 8px;
@@ -527,13 +516,13 @@ button {
   color: #1f1092;
 }
 
-#close-modal{
+#close-modal {
   cursor: pointer;
   float: right;
   font-size: 20px;
 }
 
-.lookup{
+.lookup {
   background-color: #303030;
   color: rgb(224, 235, 245);
   border-radius: 8px;
@@ -547,20 +536,19 @@ footer {
 }
 
 /*Form Alerts*/
-.alert-div{
+.alert-div {
   background-color: var(--primary-color);
   display: flex;
-  justify-content: flex-end ;
+  justify-content: flex-end;
   width: 100%;
   font-size: 1.3rem;
-   font-weight: bold;
+  font-weight: bold;
 }
 
 .closer {
-  
   color: black;
   font-size: 1.3rem;
- 
+
   padding: 5px;
   border-radius: 50%;
 }

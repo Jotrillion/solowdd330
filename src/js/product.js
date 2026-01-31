@@ -6,9 +6,5 @@ loadHeaderFooter();
 const dataSource = new ExternalServices("products");
 const productId = getParam("product");
 
-console.log("Product ID:", productId);
-
 const product = new productDetails(productId, dataSource);
 product.init();
-
-

@@ -2,14 +2,16 @@ import { loadHeaderFooter, qs, renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
     const title = document.querySelector("h2");
-    title.innerHTML = `Top Products: <span class="title">${product.Category}</span>`;
+    if (title) {
+        title.innerHTML = `Top Products: <span class="title">${product.Category}</span>`;
+    }
     return `
     <li class="product-card">
         <a href="../product_pages/?product=${product.Id}">
             <img src="${product.Images.PrimaryMedium}" alt="Image of ${product.Name}">
-            <h2 class="card_brand>${product.Brand.Name}</h2>
-            <h3 class= "card_name>${product.Name}</h3>
-            <p class="product-card_price">$${product.FinalPrice}</p>       
+            <h3 class="card__brand">${product.Brand.Name}</h3>
+            <h2 class="card__name">${product.Name}</h2>
+            <p class="product-card__price">$${product.FinalPrice}</p>       
         </a>
          <button class="lookup" data-id="${product.Id}">Quick Lookup</button>      
     </li>
@@ -29,8 +31,13 @@ export default class ProductList {
         this.renderList(this.products);
         this.addLookupHandler();
 
-        const formatCategory = this.category.replace(/-/g, " ")
-        document.querySelector(".title").textContent = formatCategory;
+        if (this.category) {
+            const formatCategory = this.category.replace(/-/g, " ");
+            const title = document.querySelector(".title");
+            if (title) {
+                title.textContent = formatCategory;
+            }
+        }
     }
 
     renderList(list) {
