@@ -107,18 +107,18 @@ export default class CheckoutProcess {
             window.location.href = "/checkout/success.html";
             localStorage.removeItem("so-cart");
         }
-        catch (e) {
-            console.log(e);// shows error message
+        catch (err) {
+            console.log(err);// shows error message
             
             removeAllAlerts();
            
-            if (e.data && typeof e.data === "object") {
-                Object.values(e.data).forEach(msg => {
+            if (err.name === 'servicesError' && typeof err.message === "object") {
+                Object.values(err.message).forEach(msg => {
                     if (msg) alertMessage(msg);
                 });
             }
-            else if (typeof e.message === "string") {
-                alertMessage(e.message);
+            else if (typeof err.message === "string") {
+                alertMessage(err.message);
             } else {
                 alertMessage("Something went wrong with placing your order.")
             }

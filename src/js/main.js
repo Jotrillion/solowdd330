@@ -1,4 +1,5 @@
 import { loadHeaderFooter } from "./utils.mjs";
+import { initNewsletterForm } from "./newsletter.js";
 
 // const dataSource = new ExternalServices("tents");
 
@@ -8,3 +9,4 @@ import { loadHeaderFooter } from "./utils.mjs";
 
 // productList.init();
 loadHeaderFooter();
+initNewsletterForm();

@@ -7,9 +7,16 @@ const checkoutProcess = new CheckoutProcess("so-cart", "#checkoutData");
 checkoutProcess.init();
 
 const checkoutForm = document.getElementById("checkout-form");
+const checkoutSubmit =
+  document.querySelector("#checkoutSubmit") ||
+  document.querySelector("#checkout-btn");
 
-checkoutForm.addEventListener("submit", (e) => {
+checkoutSubmit?.addEventListener("click", (e) => {
   e.preventDefault();
-
-  checkoutProcess.checkout(checkoutForm);
+  const myForm = document.forms[0];
+  const chk_status = myForm.checkValidity();
+  myForm.reportValidity();
+  if (chk_status) {
+    checkoutProcess.checkout(myForm);
+  }
 });

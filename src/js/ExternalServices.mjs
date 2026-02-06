@@ -4,7 +4,7 @@ const baseURL = import.meta.env.VITE_SERVER_URL || "https://wdd330-backend.onren
 async function convertToJson(res) {
   const data = await res.json();
   if( !res.ok) {
-    throw { data};
+    throw { name: 'servicesError', message: data };
   }
   return data;
 }
