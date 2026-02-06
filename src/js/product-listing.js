@@ -9,7 +9,7 @@ const element = document.querySelector(".product-list");
 
 const productList = new ProductList(category, dataSource, element);
 
-productList.init();
+await productList.init();
 
 // Search Functionality
 const searchInput = qs("#search-input");
